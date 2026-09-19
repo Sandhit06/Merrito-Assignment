@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Inventory Stockout Risk & Reorder Recommendation Tool
 
 A script that reads a per-SKU inventory event log and answers two questions the ops team actually needs answered:
