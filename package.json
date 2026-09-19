@@ -1,0 +1,18 @@
+{
+  "name": "inventory-stockout-recommender",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Determines, per SKU, whether it's at risk of stocking out before a reorder would arrive, and recommends which SKUs to reorder this week within a fixed budget.",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/main.js",
+    "test": "npm run build && node --test dist/tests",
+    "compare-strategies": "npm run build && node dist/compareStrategies.js",
+    "benchmark": "npm run build && node dist/benchmark.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "@types/node": "^20.14.10"
+  }
+}

@@ -1,0 +1,130 @@
+Case Study - Full Stack Engineer
+
+Overview
+A D2C brand sells products across multiple sales channels (Shopify, Amazon, Flipkart).
+Their ops team needs to know, for each product, whether it's at risk Of running out Of
+stock before a new order can arrive from the supplier and since they can't reorder
+everything at once, which products should actually get a purchase order this week.
+You're building the tool that answers both questions.
+
+Language & Tools
+You may use any one of the following:
+Python
+• JavaScript
+Typescript (most preferred)
+We will run your code locally. Make sure your submission is:
+Easy to set up
+• Includes any dependencies (requirements.txt or package.json)
+• Includes instructions for how to run your main solution and your test cases
+
+
+What You're Given
+You'll receive:
+In the shared ELLE, you'll find "inventory_events.json" - a log Of inventory-related
+events per product (SKU):
+{ "sku": "SKU-IOI", "channel": "shopify", "type": "sale", "quantity": 10, "timestamp": "2026-08-10T00:00:00Z"
+Event type is one of:
+O sale - units sold
+
+O return - units returned
+O restock - units added to stock
+O stock_snapshot - the stock level observed at that moment (quantity is the stock
+level itself, not a change). Snapshots arrive periodically, not on a fixed schedule.
+SKU catalog (fixed, given):
+SKI-J-102
+SKI-J-103
+SKI-J-104
+SKU
+SKU-IOI
+Primary Channel
+Shopify
+Amazon
+Flipkart
+Shopify
+Unit Cost
+Rs. 200
+Rs. 50
+Rs. 80
+Rs. 500
+
+
+Other fixed parameters:
+O reorder_lead_time_days = 14 - how long it takes for a new order to arrive once placed
+O weekly_reorder_budget= 2O,OOO - total available to spend on reorders this week,
+across all SKUs
+Important: Some events may be malformed (e.g., missing fields, bad timestamp
+formats). Your program should gracefully skip them without crashing.
+
+
+Your Task
+Implement a program that:
+Reads the event log and determines, for each SKIJ, whether it's at risk Of
+stocking out before a reorder placed today would arrive
+Given that the budget won't cover a reorder for every at-risk SKU, it decides
+which SKUs should actually be reordered this week (and how much of each),
+within the Rs. 20,000 budget.
+Outputs your recommendations in whatever format you think is most useful for
+an ops team to act on
+
+There is more than one reasonable way to interpret "at risk," and more than one
+reasonable way to decide which SKUs matter most when the budget is tight. We're not
+looking for one specific answer - we're looking at whether the approach you land on is
+well-reasoned, clearly stated, and consistently implemented.
+
+Required Test Cases
+Please include tests for:
+Note:
+A SKU that is clearly fine (plenty of stock relative to how fast it sells) + not
+flagged
+A SKU that is clearly at risk (low stock, steady sales) + flagged
+At least one malformed event + skipped without crashing
+These are the only cases with one unambiguous right answer, you're welcome to
+add more tests covering how your solution handles the less clear-cut situations in the
+sample data.
+
+README Requirements
+Your README.md must include a section titled "Assumptions & Design Decisions"
+explaining the reasoning behind your approach, specifically:
+How you defined "at risk of stockout" and why
+How you decided which at-risk SKUs get funded when the budget doesn't cover
+all of them
+The time complexity of your approach
+One question you'd ask a PM or the ops team to clarify something the brief left
+open
+
+Important Notes
+You do NOT need to build a CLI, API, or UI, a script is sufficient
+We value: code readability, sound reasoning under ambiguity, and correct
+handling of the data you're actually given (not textbook edge cases that don't
+appear in the sample data)
+There is no hidden answer key for the ambiguous parts of this task. Two candidates can reach different conclusions and both score well, if both are
+well-argued and consistently implemented.
+Do NOT UPLOAD THIS SOLUTION ON YOUR GITHUB
+
+
+Example
+Given:
+reorder_lead_time_days = 14
+weekly_reorder_budget = Rs. 20000
+SKIJ-IOI: unit_cost = 2OO, has been selling —1O units/day, and the most recent
+stock_snapshot shows 80 units on hand
+
+
+80 units + 10 units/day = 8 days of stock left. A reorder takes 14 days to arrive. So SKU-IOI will
+run out before a new order could reach the warehouse. Your output might look something like:
+
+"sku": "SKI-J-101",
+"at risk": true,
+"days_of_stock_remainingn: 8,
+"recommend reorder": true,
+"reorder_quantity": 60,
+"reorder cost": 12000
+
+
+What to Submit
+Reply to the email with the Assignment brief with the following:
+main.py / main.ts / main.js
+Your test file(s)
+README.md with clear run instructions (Your README must include a short
+explanation of how you):
+requirements.txt or package.json if needed

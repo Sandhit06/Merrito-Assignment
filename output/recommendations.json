@@ -1,0 +1,121 @@
+{
+  "summary": {
+    "as_of": "2026-08-26T23:00:00.000Z",
+    "total_events_read": 53,
+    "valid_events_processed": 50,
+    "events_skipped": 3,
+    "weekly_reorder_budget": 20000,
+    "total_allocated_cost": 20000,
+    "remaining_budget": 0,
+    "sku_at_risk_count": 2,
+    "sku_funded_count": 2
+  },
+  "recommendations": [
+    {
+      "sku": "SKU-101",
+      "primary_channel": "shopify",
+      "unit_cost": 200,
+      "current_stock": 80,
+      "sales_velocity_per_day": 10,
+      "days_of_stock_remaining": 8,
+      "at_risk": true,
+      "risk_tier": "watch",
+      "days_since_last_snapshot": 0,
+      "stock_confidence": "high",
+      "recommend_reorder": true,
+      "reorder_quantity": 45,
+      "reorder_cost": 9000,
+      "ideal_reorder_quantity": 60,
+      "ideal_reorder_cost": 12000,
+      "funding_note": "Partially funded: remaining budget covered 45 of the ideal 60 units."
+    },
+    {
+      "sku": "SKU-102",
+      "primary_channel": "amazon",
+      "unit_cost": 50,
+      "current_stock": 500,
+      "sales_velocity_per_day": 2,
+      "days_of_stock_remaining": 250,
+      "at_risk": false,
+      "risk_tier": "safe",
+      "days_since_last_snapshot": 0,
+      "stock_confidence": "high",
+      "recommend_reorder": false,
+      "reorder_quantity": 0,
+      "reorder_cost": 0,
+      "ideal_reorder_quantity": 0,
+      "ideal_reorder_cost": 0,
+      "funding_note": "Not at risk: sufficient stock relative to recent sales velocity."
+    },
+    {
+      "sku": "SKU-103",
+      "primary_channel": "flipkart",
+      "unit_cost": 80,
+      "current_stock": 192,
+      "sales_velocity_per_day": 8,
+      "days_of_stock_remaining": 24,
+      "at_risk": false,
+      "risk_tier": "safe",
+      "days_since_last_snapshot": 0,
+      "stock_confidence": "high",
+      "recommend_reorder": false,
+      "reorder_quantity": 0,
+      "reorder_cost": 0,
+      "ideal_reorder_quantity": 0,
+      "ideal_reorder_cost": 0,
+      "funding_note": "Not at risk: sufficient stock relative to recent sales velocity."
+    },
+    {
+      "sku": "SKU-104",
+      "primary_channel": "shopify",
+      "unit_cost": 500,
+      "current_stock": 20,
+      "sales_velocity_per_day": 3,
+      "days_of_stock_remaining": 6.67,
+      "at_risk": true,
+      "risk_tier": "urgent",
+      "days_since_last_snapshot": 0,
+      "stock_confidence": "high",
+      "recommend_reorder": true,
+      "reorder_quantity": 22,
+      "reorder_cost": 11000,
+      "ideal_reorder_quantity": 22,
+      "ideal_reorder_cost": 11000,
+      "funding_note": "Fully funded at ideal reorder quantity."
+    }
+  ],
+  "skipped_events": [
+    {
+      "index": 0,
+      "reason": "missing or unparsable \"timestamp\" (got undefined)",
+      "raw": {
+        "sku": "SKU-101",
+        "channel": "shopify",
+        "type": "sale",
+        "quantity": 30
+      }
+    },
+    {
+      "index": 36,
+      "reason": "missing or non-numeric \"quantity\"",
+      "raw": {
+        "sku": "SKU-102",
+        "channel": "amazon",
+        "type": "sale",
+        "quantity": "N/A",
+        "timestamp": "2026-08-18T09:00:00Z"
+      }
+    },
+    {
+      "index": 52,
+      "reason": "missing or unparsable \"timestamp\" (got \"not-a-date\")",
+      "raw": {
+        "sku": "SKU-104",
+        "channel": "shopify",
+        "type": "sale",
+        "quantity": 9,
+        "timestamp": "not-a-date"
+      }
+    }
+  ]
+}
